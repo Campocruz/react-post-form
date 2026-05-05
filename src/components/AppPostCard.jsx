@@ -1,4 +1,6 @@
-export default function AppPostCard({ post }) {
+import AppBtnItem from "./AppBtnItem";
+
+export default function AppPostCard({ post, index, onDelateCurrentPost }) {
 
   return (
     <>
@@ -19,6 +21,11 @@ export default function AppPostCard({ post }) {
             <div className="col">
               <p>{post.body}</p>
             </div>
+          </div>
+        </div>
+        <div className="card-footer">
+          <div>
+            <AppBtnItem index={index} icon={"trash"} text={"delate"} color={"danger"} userFuction={onDelateCurrentPost} />
           </div>
         </div>
       </div>

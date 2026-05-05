@@ -15,6 +15,7 @@ const postList = [];
 function App() {
 
   const [post, setPost] = useState(initPost)
+  const [cardList, setCardList] = useState([])
 
   function formatData(e) {
     const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
@@ -23,8 +24,15 @@ function App() {
 
   function handlerSubmit(e) {
     e.preventDefault()
-    postList.push(post)
+    // postList.push(post)
+    setCardList(post)
+    console.log(cardList);
+
     setPost(initPost)
+  }
+
+  function delateCurrentPost(i) {
+    const filterdIndex = postList.filter((posts, index) => { return index !== i })
   }
 
   return (
@@ -37,8 +45,8 @@ function App() {
           <hr className="mt-3" />
           <div className="col mt-3">
             {
-              postList.length > 0 && postList.map((post, index) => {
-                return <AppPostCard key={index} post={post} />
+              cardList.length > 0 && cardList.map((post, index) => {
+                return <AppPostCard key={index} index={index} post={post} onDelateCurrentPost={delateCurrentPost} />
               })
             }
           </div>
