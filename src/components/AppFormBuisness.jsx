@@ -1,80 +1,56 @@
-export default function AppFormBuisness({ onFormatData, user, onHandlerSubmit }) {
+export default function AppFormBuisness({ onFormatData, post, onHandlerSubmit }) {
 
   return (
     <>
       <form onSubmit={onHandlerSubmit}>
         <div className="row g-3 row-cols-2">
           <div className="col">
+            <label htmlFor="author">Autore del Post</label>
             <input
-              name="firstName"
+              name="author"
               className="form-control"
-              placeholder="Nome"
+              placeholder="autore"
               type="text"
-              value={user.firstName}
+              value={post.author}
               onChange={onFormatData}
             />
           </div>
           <div className="col">
+            <label htmlFor="title">Titolo del Post</label>
             <input
-              name="lastName"
+              name="title"
               className="form-control"
-              placeholder="Cognome"
+              placeholder="titolo"
               type="text"
-              value={user.lastName}
+              value={post.title}
               onChange={onFormatData}
             />
           </div>
-          <div className="col">
-            <input
-              name="companyName"
+          <div className="col-12">
+            <label htmlFor="body">Messaggio del Post</label>
+            <textarea
+              name="body"
               className="form-control"
-              placeholder="Azienda"
+              placeholder="body"
               type="text"
-              value={user.companyName}
+              value={post.body}
               onChange={onFormatData}
             />
           </div>
-          <div className="col">
+          <div className="col mb-5">
+            <label htmlFor="public">Post Pubblico</label>
             <input
-              name="role"
-              className="form-control"
-              placeholder="Ruolo"
-              type="text"
-              value={user.role}
-              onChange={onFormatData}
-            />
-          </div>
-          <div className="col">
-            <input
-              name="email"
-              className="form-control"
-              placeholder="Email"
-              type="email"
-              value={user.email}
-              onChange={onFormatData}
-            />
-          </div>
-          <div className="col">
-            <input
-              name="phone"
-              className="form-control"
-              placeholder="Telefono"
-              type="tel"
-              value={user.phone}
+              name="public"
+              className="form-check-input"
+              placeholder="scope"
+              type="checkbox"
+              value={post.public}
               onChange={onFormatData}
             />
           </div>
         </div>
-        <input
-          name="companyPic"
-          className="form-control mt-3"
-          placeholder="Logo Azienda"
-          type="url"
-          value={user.companyPic}
-          onChange={onFormatData}
-        />
-        <button type="submit" className="btn btn-dark w-100">Add Info</button>
-      </form>
+        <button type="submit" className="btn btn-dark w-100">Add Post</button>
+      </form >
     </>
   )
 }
