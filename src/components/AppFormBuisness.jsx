@@ -37,7 +37,7 @@ export default function AppFormBuisness({ onFormatData, post, onHandlerSubmit })
               onChange={onFormatData}
             />
           </div>
-          <div className="col mb-5">
+          <div className="col mb-3">
             <label htmlFor="public">Post Pubblico</label>
             <input
               name="public"

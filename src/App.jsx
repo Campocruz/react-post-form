@@ -1,14 +1,16 @@
 import { useState } from 'react'
 import './App.css'
 import AppFormBuisness from './components/AppFormBuisness'
+import AppPostCard from './components/AppPostCard'
 
 const initPost = {
-  author: 'cosma',
-  title: 'react app',
+  author: '',
+  title: '',
   body: '',
   public: false
 }
 
+const postList = [];
 
 function App() {
 
@@ -21,17 +23,25 @@ function App() {
 
   function handlerSubmit(e) {
     e.preventDefault()
-    console.log(post);
+    postList.push(post)
+    setPost(initPost)
   }
 
   return (
     <>
       <div className="container">
         <div className="row">
-          <div className="col-8">
+          <div className="col-12">
             <AppFormBuisness onFormatData={formatData} post={post} onHandlerSubmit={handlerSubmit} />
           </div>
-          <div className="col-4"></div>
+          <hr className="mt-3" />
+          <div className="col mt-3">
+            {
+              postList.length > 0 && postList.map((post, index) => {
+                return <AppPostCard key={index} post={post} />
+              })
+            }
+          </div>
         </div>
       </div>
     </>
