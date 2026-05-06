@@ -10,8 +10,6 @@ const initPost = {
   public: false
 }
 
-const postList = [];
-
 function App() {
 
   const [post, setPost] = useState(initPost)
@@ -24,15 +22,14 @@ function App() {
 
   function handlerSubmit(e) {
     e.preventDefault()
-    // postList.push(post)
-    setCardList(post)
-    console.log(cardList);
-
+    cardList.push(post)
+    setCardList(cardList)
     setPost(initPost)
   }
 
   function delateCurrentPost(i) {
-    const filterdIndex = postList.filter((posts, index) => { return index !== i })
+    const filterdIndex = cardList.filter((posts, index) => { return index !== i })
+    setCardList(filterdIndex)
   }
 
   return (
